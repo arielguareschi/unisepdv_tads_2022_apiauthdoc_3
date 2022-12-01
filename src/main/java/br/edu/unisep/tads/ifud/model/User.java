@@ -50,7 +50,7 @@ import lombok.Setter;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO )
+    @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
 
     @Column(name = "username", nullable = false, length = 50)
@@ -63,13 +63,13 @@ public class User {
     @Email
     private String email;
 
-    @Column(name = "senha", nullable = false, length = 50)
+    @Column(name = "password", nullable = false, length = 100)
     @NotBlank
-    @Size(max = 50)
+    @Size(max = 100)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "usuario_roles", 
+    @JoinTable(name = "usuario_roles",
                 joinColumns = @JoinColumn(name = "user_id"),
                 inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
@@ -98,5 +98,9 @@ public class User {
     this.username = user;
     this.email = email;
     this.password = password;
+    this.createdDate = new Date();
+    this.updatedDate = new Date();
+    this.createdBy = user;
+    this.updatedBy = user;
   }
 }

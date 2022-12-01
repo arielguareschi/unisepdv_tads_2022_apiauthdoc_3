@@ -6,15 +6,17 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="unisepdv_tads_2022_apiauthdoc_3" />
+        <module name="ifud" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ifud" target="11" />
       <module name="unisepdv_tads_2022_apiauthdoc_3" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ifud" options="-parameters" />
       <module name="unisepdv_tads_2022_apiauthdoc_3" options="-parameters" />
     </option>
   </component>

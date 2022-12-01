@@ -1,9 +1,12 @@
 package br.edu.unisep.tads.ifud.controller;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1")
+@Api( tags = "Clients")
 public class ClienteController {
     
     @Autowired
@@ -45,6 +49,12 @@ public class ClienteController {
     @PostMapping("/cliente")
     public Cliente createCliente(@RequestBody Cliente cliente) {
         return clienteRepository.save(cliente);
+    }
+
+    @ApiOperation(value = "This method is used to get the clients.")
+    @GetMapping
+    public List<String> getClients() {
+        return Arrays.asList("First Client", "Second Client");
     }
 
     @PutMapping("/cliente/{id}")
